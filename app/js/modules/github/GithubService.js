@@ -1,6 +1,6 @@
 githubModule.factory('GitHubStreamData', function(){
     return {title:"GitHubStreamData",
-        searchTerm:'Angular'}
+            searchTerm:'Angular'}
 })
 
 
@@ -11,7 +11,8 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
         });
 // This is a bog statndard search method
     return {
-        search: function() {
+        search: function(value) {
+            if(value) GitHubStreamData.searchTerm = value;
             var q = $q.defer();
             GithubPublic.get({
                 q: GitHubStreamData.searchTerm

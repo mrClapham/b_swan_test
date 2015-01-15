@@ -1,3 +1,21 @@
 <div class="git-holder">
     <h1>Hello From the git holder</h1>
+    <a ng-click="searchOn(searchTerm)">search</a>
+    <input type="text" ng-model="searchTerm"/>
+    <p>{{searchTerm}}</p>
+    <ul>
+        <li data-ng-repeat = "item in items">
+            <a ng-click="">
+                <div class="photoSetGallery">
+                    <!--<img ng-src="{{ps.primary_photo_extras.url_sq}}" height='{{ps.primary_photo_extras.height_sq}}' width='{{ps.primary_photo_extras.width_sq}}' imageonload/>-->
+                    <div class="thumbTitle">
+                        <div class="innerTitle">{{item.$$hashKey}}</div>
+                        <div class="innerTitle">{{item.owner.url}}</div>
+                        <div class="innerTitle">{{item.stargazers_url}}</div>
+                        <img ng-src="{{item.owner.avatar_url}}" />
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
 </div>
