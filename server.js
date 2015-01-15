@@ -10,11 +10,11 @@ app.set('title','Git Search');
 
 app.use(express.static(path.join(__dirname, 'app')));
 
-/* serves main page */
+/* serves intro splash page - if I have time to do one */
 app.get("/fl", function(req, res) {
     res.sendFile('app/intro.html');
 });
-
+/* serves main page */
 app.use("/", express.static(__dirname + 'app/index.html'));
 
 
