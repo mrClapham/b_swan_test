@@ -1,9 +1,17 @@
 githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'GithubPublicApi', '$http', function($scope, GitHubStreamData, GithubPublicApi, $http) {
     $scope.testData = "Test data bollox";
     $scope.loaded = "NOT LOADED";
+    $scope.gitSearchData = {};
     $scope.searchTerm = "Three";
     $scope.lineChartHolderId = "lineChartRender";
-//-- methods
+
+    //-- watches
+
+    $scope.$watch("gitSearchData", function(oldVal, newVal){
+        console.log("CHANGED ", oldVal, newVal);
+        if( $scope.barChartGit ) $scope.barChartGit.setData(newVal);
+    });
+//-- METHODS
     $scope.searchOn=function(value){
         $scope.searchTerm = value;
         $scope.items = [];
