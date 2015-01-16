@@ -4,12 +4,14 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
     $scope.gitSearchData = {};
     $scope.searchTerm = "Three";
     $scope.lineChartHolderId = "lineChartRender";
+    $scope.selectedRepoIndex = 0;
+    $scope.selectedRepo = null;
 
     //-- watches
 
-    $scope.$watch("gitSearchData", function(oldVal, newVal){
-        console.log("CHANGED ", oldVal, newVal);
-        if( $scope.barChartGit ) $scope.barChartGit.setData(newVal);
+    $scope.$watch("gitSearchData", function(newVal, oldVal ){
+        console.log("CHANGED ", newVal.items);
+        if( $scope.barChartGit && newVal.items) $scope.barChartGit.setData(newVal.items);
     });
 //-- METHODS
     $scope.searchOn=function(value){
@@ -21,8 +23,10 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
             $scope.gitSearchData = resp;
 
             $scope.items = resp.items;
+            if($scope.items[0]) $scope.selectedRepo = $scope.items[$scope.selectedRepoIndex];
 
-            $scope.items.length == 0 ? $scope.loaded = "Sorry, there were no reults for "+$scope.searchTerm : $scope.loaded = "HAS LOADED";
+            $scope.items.length == 0 ? $scope.loaded = "Sorry, there were no results for "+$scope.searchTerm : $scope.loaded = "HAS LOADED";
+
         });
 
     };
