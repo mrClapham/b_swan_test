@@ -2,7 +2,7 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
     $scope.testData = "Test data bollox";
     $scope.loaded = "NOT LOADED";
     $scope.searchTerm = "Three";
-
+//-- methods
     $scope.searchOn=function(value){
         $scope.searchTerm = value;
         $scope.items = [];
@@ -15,6 +15,10 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
         });
 
     };
+    //-- create the d3 chart
+    $scope.initD3Chart = function(){
+
+    }
 
 }]);
 
