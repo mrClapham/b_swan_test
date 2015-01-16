@@ -19,21 +19,21 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
         GithubPublicApi.search(value).then(function(resp){
             console.log("Search done...",resp);
             $scope.gitSearchData = resp;
-            $scope.loaded = "HAS LOADED";
+
             $scope.items = resp.items;
+
+            $scope.items.length == 0 ? $scope.loaded = "Sorry, there were no reults for "+$scope.searchTerm : $scope.loaded = "HAS LOADED";
         });
 
     };
     //-- create the d3 chart
+    //TODO: if time - move this to its own directive.
+
     $scope.initD3Chart = function(targ){
         $scope.barChartGit = new BarChartGit(targ);
-        console.log("$scope.barChartGit ",$scope.barChartGit);
-        console.log("targ ------------ ",targ);
     };
 
     $scope.LineChartRenderElement = document.getElementById($scope.lineChartHolderId);
-
-    console.log("$scope.LineChartRenderElement  ",$scope.LineChartRenderElement)
-    $scope.initD3Chart($scope.LineChartRenderElement);
+    $scope.initD3Chart($scope.lineChartHolderId);
 }]);
 

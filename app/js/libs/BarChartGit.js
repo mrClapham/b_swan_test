@@ -32,7 +32,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
     }
 
    var _init_svg =function(){
-        this._svg = d3.select( "#lineChartRender" )
+        this._svg = d3.select( "#"+this.getTarget() )
 
        this._svg
             .style('width', this.width+ "px")
