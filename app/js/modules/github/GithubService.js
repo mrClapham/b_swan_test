@@ -19,10 +19,26 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
             }, function(resp) {
                 console.log("REST ",resp)
                 GitHubStreamData.items = resp.items
-                console.log("gitHubStreamData ",GitHubStreamData)
                 q.resolve(resp);
             }, function(err) {
                 console.log("ERROR ", err)
+                q.reject(err);
+            })
+            return q.promise;
+        },
+        searchIssues:function(reponame){
+            var GithubIssues = $resource('https://api.github.com/search/issues/',
+                {   get: { method: "JSONP" }
+                    , jsoncallback: 'JSON_CALLBACK'
+                });
+            var q = $q.defer();
+            GithubIssues.get({
+                q: reponame
+            }, function(resp) {
+                console.log("REST ISUUES ",resp)
+                q.resolve(resp);
+            }, function(err) {
+                console.log("ERROR ON ISSUES", err)
                 q.reject(err);
             })
             return q.promise;
@@ -34,7 +50,6 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
 
                 var result = TwitterAPI.get({ q: "charlie" });
                 console.log("RESULT :: ",result)
-
         }
     }
 })
