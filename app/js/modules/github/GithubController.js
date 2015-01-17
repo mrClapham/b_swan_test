@@ -7,6 +7,10 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
     $scope.selectedRepoIndex = 0;
     $scope.selectedRepo = null;
 
+
+
+    $scope.headerTemplate  = "partials/header.html";
+
     //-- watches
 
     $scope.$watch("gitSearchData", function(newVal, oldVal ){

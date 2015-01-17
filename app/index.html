@@ -31,9 +31,13 @@
     <script src="js/modules/github/GithubModule.js"></script>
     <script src="js/modules/github/GithubService.js"></script>
     <script src="js/modules/github/GithubController.js"></script>
+    <script src="js/modules/github/GithubDirectives.js"></script>
 
 </head>
 <body>
+<div ng-include src="{headerTemplate}"></div>
+
+<!--<ng-include src="partials/header.html"></ng-include>-->
 <h1>Hello World</h1>
 
 <div ng-app="AppMain" ng-controller="GithubController">

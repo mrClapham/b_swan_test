@@ -5,29 +5,26 @@
     <p>{{searchTerm}}</p>
     <div class="selectedItem">
 
-       <h1> Satagazers: {{selectedRepo.stargazers_url}} </h1>
-
+        <h1> Satagazers: {{selectedRepo.stargazers_url}} </h1>
     </div>
-
-
-
     <ul>
-        <li data-ng-repeat = "(key, item) in items">
-            <a ng-click="setActiveRepo(key)">
-                <div class="photoSetGallery">
-                    <!--<img ng-src="{{ps.primary_photo_extras.url_sq}}" height='{{ps.primary_photo_extras.height_sq}}' width='{{ps.primary_photo_extras.width_sq}}' imageonload/>-->
-                    <div class="thumbTitle">
-                        <h1>{{key}}</h1>
-                        <div class="innerTitle">{{item.$$hashKey}}</div>
-                        <div class="innerTitle">{{item.owner.url}}</div>
-                        <div class="innerTitle">{{item.stargazers_url}}</div>
-                        <img ng-src="{{item.owner.avatar_url}}" width="100px" />
-                        <a ng-click="searchIssues(full_name)">Get Issues</a>
-                    </div>
-                </div>
-            </a>
-        </li>
+        <!--<li data-ng-repeat = "(key, item) in items">-->
+            <!--<a ng-click="setActiveRepo(key)">-->
+                <!--<div class="photoSetGallery">-->
+                    <!--&lt;!&ndash;<img ng-src="{{ps.primary_photo_extras.url_sq}}" height='{{ps.primary_photo_extras.height_sq}}' width='{{ps.primary_photo_extras.width_sq}}' imageonload/>&ndash;&gt;-->
+                    <!--<div class="thumbTitle">-->
+                        <!--<h1>{{key}}</h1>-->
+                        <!--<div class="innerTitle">{{item.$$hashKey}}</div>-->
+                        <!--<div class="innerTitle">{{item.owner.url}}</div>-->
+                        <!--<div class="innerTitle">{{item.stargazers_url}}</div>-->
+                        <!--<img ng-src="{{item.owner.avatar_url}}" width="100px" />-->
+                        <!--<a ng-click="searchIssues(full_name)">Get Issues</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</li>-->
+        <menu-cell></menu-cell>
     </ul>
 </div>
 
-    </div>
+</div>
