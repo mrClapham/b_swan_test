@@ -11,7 +11,6 @@ githubModule.directive('mainProjectDisplay', ['GithubPublicApi', function(Github
                 if(scope.$parent.selectedRepo && scope.$parent.selectedRepo.full_name){
                     GithubPublicApi.searchIssues(scope.$parent.selectedRepo.full_name).then(function(resp){
                         scope.issueData = resp.items
-                        console.log(scope.issueData)
                     })
                 }
             }

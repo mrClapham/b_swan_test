@@ -17,7 +17,6 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
             GithubPublic.get({
                 q: GitHubStreamData.searchTerm
             }, function(resp) {
-                console.log("REST ",resp)
                 GitHubStreamData.items = resp.items
                 q.resolve(resp);
             }, function(err) {
@@ -35,7 +34,6 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
             GithubIssues.get({
                 q: reponame
             }, function(resp) {
-                console.log("REST ISUUES ",resp)
                 q.resolve(resp);
             }, function(err) {
                 console.log("ERROR ON ISSUES", err)
