@@ -8,6 +8,9 @@ body{
     background-color: @greyMid;
     color:@textGrey;
 }
+.hide{
+  display: none;
+}
 .git-holder{
     background-color: @navGrey;
     padding: 15px;
@@ -29,15 +32,29 @@ body{
   padding: 0;
 }
 .git-repo-menu-cell{
-  background-color: @navGrey;
 
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  opacity:0.4;
+  background-color: @navGrey;
   word-wrap: break-word;
   margin: 1px 0 1px 0;
   position: relative;
   height:@menuCellHeight;
   a{
     color: @textGrey;
+  }
+  &.active{
+    opacity:1;
+  }
+  &:not(.active){
+    &:hover{
+      opacity:.9;
+      color: #ffffff;
 
+    }
   }
   .cell-icon{
     width:@menuCellHeight;

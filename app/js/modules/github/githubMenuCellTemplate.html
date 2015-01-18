@@ -1,4 +1,5 @@
-<li class="git-repo-menu-cell" data-ng-repeat = "(key, item) in items">
+<li class="git-repo-menu-cell" data-ng-repeat = "(key, item) in items" datakey="{{key}}"  ng-class="{ active: key == selectedRepoIndex }"
+        >
     <a ng-click="setActiveRepo(key)">
         <div class="git-repo-menu-cell-inner">
             <!--<h1>{{key}}</h1>-->

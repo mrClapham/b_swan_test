@@ -8,9 +8,11 @@ githubModule.directive('mainProjectDisplay', ['GithubPublicApi', function(Github
         link:function(scope, element, attrs ){
             //TODO: Add the catch for Errors when the limit has been exceeded on calls to api.
             scope.getIssues = function(){
+                scope.issueData = []; // just to do an immediate hide of old issues
                 if(scope.$parent.selectedRepo && scope.$parent.selectedRepo.full_name){
                     GithubPublicApi.searchIssues(scope.$parent.selectedRepo.full_name).then(function(resp){
                         scope.issueData = resp.items
+                        scope.total_count = resp.total_count
                     })
                 }
             }
@@ -31,7 +33,7 @@ githubModule.directive('menuCell', function() {
         replace: "true",
         templateUrl: "js/modules/github/githubMenuCellTemplate.html",
         link:function(scope, element, attrs ){
-            // nowt yet - but who knows...
+
 
         }
     }

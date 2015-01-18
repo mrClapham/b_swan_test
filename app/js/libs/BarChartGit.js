@@ -100,19 +100,6 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .attr("class", "barDisplay")
             .attr('fill',  "#ff00ff")
 
-
-        _updateView.call(this);
-    }
-
-
-    var _updateView = function(){
-        var _this = this
-
-        this._gridLinesY
-            .call(this.yAxis);
-
-
-
         this._barsText = this._bars
             .append("text")
             .attr("class", "chart-text")
@@ -124,6 +111,19 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .style("text-anchor", "end")
             .text(function(d,i){return d.full_name+": "+d[_this.yProperty]});
 
+        this._bars.exit().remove();
+
+
+        _updateView.call(this);
+    }
+
+
+    var _updateView = function(){
+        var _this = this
+
+        this._gridLinesY
+            .call(this.yAxis);
+
 //            .attr("y", function(d,i){ return _this.height - ( _this._scaleY(d[_this.yProperty]) )} )
 //            .attr("height", function(d) { return _this._scaleY(d[_this.yProperty]) });
 
@@ -134,7 +134,6 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .attr("transform", function(d, i) {
                 return "translate("+30*i+","+0+")";
             })
-
             .select('.barDisplay')
             .attr("y", function(d,i){ return _this._scaleY(d[_this.yProperty])} )
 
@@ -144,7 +143,6 @@ var BarChartGit = (function(target, opt_data, opt_config){
             })
             .attr("width", ((_this.width-this.padding.l-this.padding.l)/30-1) );
 
-        this._bars.exit().remove();
     }
 
 

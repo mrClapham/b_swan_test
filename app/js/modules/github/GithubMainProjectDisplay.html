@@ -1,5 +1,6 @@
-<div class="git-main-display">
+<div ng-class="{ hide: $parent.items.length == 0 }"  class="git-main-display">
 <h3>{{$parent.selectedRepo.full_name}} </h3>
+<h3>{{$parent.items.length}} </h3>
     <p>{{$parent.selectedRepo.description}} </p>
     <a href ="{{$parent.selectedRepo.html_url}} " target="_blank"> <p class="fa fa-github-alt"> visit the repo</p> </a>
 
@@ -12,9 +13,9 @@
         </a>
 
     </div>
-    <p>issues</p>
+    <h4 ng-hide="{{total_count == 0 }}" ng-class="{ hide: total_count == 0 }">issues {{total_count}}</h4>
 <!--<a ng-click="getIssues()">CLICK FOR ISSUES</a>-->
-<ul class="issues">
+<ul class="issues ">
     <li data-ng-repeat = "(key, item) in issueData">
         <a href="{{item.html_url}}" target="_blank">{{item.title}}</a>
         <p>{{item.body}}</p>

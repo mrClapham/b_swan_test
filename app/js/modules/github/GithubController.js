@@ -7,6 +7,8 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
     $scope.selectedRepo = null;
     $scope.headerTemplate  = "partials/header.html";
     $scope.footerTemplate  = "partials/footer.html";
+    $scope.items = [];
+
     // has the chart been initialised?
     $scope.barChartGit = null
 

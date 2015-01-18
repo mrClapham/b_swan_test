@@ -1,6 +1,9 @@
 githubModule.factory('GitHubStreamData', function(){
     return {title:"GitHubStreamData",
-            searchTerm:'Angular'}
+            searchTerm:'Angular',
+            errorMessage: "No Errors",
+            issueErrorMessage: "No Errors"
+    }
 })
 
 
@@ -18,9 +21,12 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
                 q: GitHubStreamData.searchTerm
             }, function(resp) {
                 GitHubStreamData.items = resp.items
+                GitHubStreamData.errorMessage = "No error"
                 q.resolve(resp);
             }, function(err) {
                 console.log("ERROR ", err)
+                GitHubStreamData.errorMessage = "ERROR"
+
                 q.reject(err);
             })
             return q.promise;
@@ -34,9 +40,13 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
             GithubIssues.get({
                 q: reponame
             }, function(resp) {
+                GitHubStreamData.issueErrorMessage = "ITEMS  GOOD"
+                console.log(resp)
                 q.resolve(resp);
             }, function(err) {
                 console.log("ERROR ON ISSUES", err)
+                GitHubStreamData.issueErrorMessage = "ITEMS  error"
+
                 q.reject(err);
             })
             return q.promise;
