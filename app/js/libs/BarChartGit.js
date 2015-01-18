@@ -5,7 +5,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
         this.backgroundColor = "#353535"
         this.width      = 1170;
         this.height     = 800;
-        this.padding = {t:40, r:40, b:140,l:40};
+        this.padding = {t:40, r:40, b:240,l:90};
         this._svg;
         this._gridLinesHorizontal = null;
         this._gridLinesVertical = null;
@@ -90,6 +90,16 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .orient("left")
             .ticks(10);
 
+        this._bars = this._lineHolder.selectAll(".bar")
+            .data(this._data);
+
+        this._bars
+            .enter().append("svg:g")
+            .attr("class", "bar")
+            .append("rect")
+            .attr("class", "barDisplay")
+            .attr('fill',  "#ff00ff")
+
 
         _updateView.call(this);
     }
@@ -98,27 +108,21 @@ var BarChartGit = (function(target, opt_data, opt_config){
     var _updateView = function(){
         var _this = this
 
-
-
         this._gridLinesY
             .call(this.yAxis);
 
-        console.log("this.yAxis ",this.yAxis)
 
 
-        this._bars = this._lineHolder.selectAll(".bar")
-            .data(this._data);
-
-        this._bars
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr('fill',  "#ff00ff")
+        this._barsText = this._bars
             .append("text")
+            .attr("class", "chart-text")
+            .attr('fill',  "#ffffff")
             .attr("transform", "rotate(-90)")
-            .attr("y", 160)
+            .attr("y", 16)
+            .attr("x", - (this.height-this.padding.b) )
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Frequency");
+            .text(function(d,i){return d.full_name+": "+d[_this.yProperty]});
 
 //            .attr("y", function(d,i){ return _this.height - ( _this._scaleY(d[_this.yProperty]) )} )
 //            .attr("height", function(d) { return _this._scaleY(d[_this.yProperty]) });
@@ -126,13 +130,19 @@ var BarChartGit = (function(target, opt_data, opt_config){
 
         this._bars.transition()
             .duration(800)
+            //.attr("x", function(d, i) { return 30 * i; })
+            .attr("transform", function(d, i) {
+                return "translate("+30*i+","+0+")";
+            })
+
+            .select('.barDisplay')
             .attr("y", function(d,i){ return _this._scaleY(d[_this.yProperty])} )
+
             .attr("height", function(d, i) {
             console.log(i," : ",d[_this.yProperty]," ",_this._scaleY(d[_this.yProperty]) )
             return (_this.height-_this.padding.b - _this.padding.t) - _this._scaleY(d[_this.yProperty])
             })
-            .attr("x", function(d, i) { return 30 * i; })
-            .attr("width", (_this.width-this.padding.l-this.padding.l)/30 );
+            .attr("width", ((_this.width-this.padding.l-this.padding.l)/30-1) );
 
         this._bars.exit().remove();
     }
