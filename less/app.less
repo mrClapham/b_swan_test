@@ -3,6 +3,7 @@
 @textGrey: #999999;
 @navGrey: #222222;
 @accentColour: #D3EC0E;
+@menuCellHeight: 30px;
 body{
     background-color: @greyMid;
     color:@textGrey;
@@ -10,7 +11,7 @@ body{
 .git-holder{
     background-color: @navGrey;
     padding: 15px;
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 .git-footer{
@@ -28,21 +29,66 @@ body{
   padding: 0;
 }
 .git-repo-menu-cell{
+  background-color: @navGrey;
+
   word-wrap: break-word;
-  background-color: #ffff00;
   margin: 1px 0 1px 0;
+  position: relative;
+  height:@menuCellHeight;
   a{
-    color: @accentColour;
+    color: @textGrey;
+
+  }
+  .cell-icon{
+    width:@menuCellHeight;
+    height:@menuCellHeight;
+    position: absolute;
+    left: 0;
+    top: 0;
+    img{
+      height: @menuCellHeight;
+    }
+  }
+  .cell-title{
+   position: absolute;
+    left: @menuCellHeight*1.5;
+    top: 5px;
+  }
+  .git-repo-menu-cell-inner{
+    width:100%;
+    height: 100%;
   }
 
-  .git-repo-menu-cell-inner{
-    display: block;
-  }
 }
 
 .git-main-display{
   word-wrap: break-word;
   background-color: @greyMid;
+  h3{
+    color: @accentColour;
+  }
+  a{
+    color: #ffffff;
+    &:hover{
+      color: @accentColour;
+      text-decoration: none;
+    }
+  }
+}
+
+ul.issues{
+  a{color: #ffffff;
+  &:hover{
+    color:@accentColour;
+    text-decoration: none;
+  }
+  }
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li{
+  border-top: 1px dotted #ffffff;
+  }
 }
 
 /*  OVERRIDES FOR BOOTSTRAP */

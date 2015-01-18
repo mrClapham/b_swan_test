@@ -1,12 +1,25 @@
 <div class="git-main-display">
-<h1>This is the the main item</h1>
-<p> Satragazers: {{$parent.selectedRepo.stargazers_url}} </p>
-<p> Satragazers: {{$parent.selectedRepo.full_name}} </p>
+<h3>{{$parent.selectedRepo.full_name}} </h3>
+    <p>{{$parent.selectedRepo.description}} </p>
+    <a href ="{{$parent.selectedRepo.html_url}} " target="_blank"> <p class="fa fa-github-alt"> visit the repo</p> </a>
+
+    <!--<p> stargazers_url: {{$parent.selectedRepo.stargazers_url}} </p>-->
+    <div class="owner-data">
+        <!--<p> login: {{$parent.selectedRepo.owner.login}} </p>-->
+        <!--<p> id: {{$parent.selectedRepo.owner.id}} </p>-->
+        <a href ="{{$parent.selectedRepo.owner.html_url}} " target="_blank">
+            <img ng-src="{{$parent.selectedRepo.owner.avatar_url}}" width="100px" />
+        </a>
+
+    </div>
+    <p>issues</p>
 <!--<a ng-click="getIssues()">CLICK FOR ISSUES</a>-->
-
+<ul class="issues">
     <li data-ng-repeat = "(key, item) in issueData">
-        <H3>ISSUE {{item.title}}</H3>
+        <a href="{{item.html_url}}" target="_blank">{{item.title}}</a>
+        <p>{{item.body}}</p>
     </li>
-
+</ul>
 
 </div>
+

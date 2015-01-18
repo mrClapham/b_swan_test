@@ -6,6 +6,7 @@ githubModule.directive('mainProjectDisplay', ['GithubPublicApi', function(Github
         scope:{},
         templateUrl: "js/modules/github/GithubMainProjectDisplay.html",
         link:function(scope, element, attrs ){
+            //TODO: Add the catch for Errors when the limit has been exceeded on calls to api.
             scope.getIssues = function(){
                 if(scope.$parent.selectedRepo && scope.$parent.selectedRepo.full_name){
                     GithubPublicApi.searchIssues(scope.$parent.selectedRepo.full_name).then(function(resp){
@@ -13,16 +14,12 @@ githubModule.directive('mainProjectDisplay', ['GithubPublicApi', function(Github
                         console.log(scope.issueData)
                     })
                 }
-
             }
             //---
 
             scope.$watch('$parent.selectedRepo', function(newVal, oldVal){
-                console.log("THE VALUE HAS BEEN CHANGED")
                 scope.getIssues();
             });
-
-
         }
     }
 }]);
@@ -40,3 +37,7 @@ githubModule.directive('menuCell', function() {
         }
     }
 });
+
+
+
+

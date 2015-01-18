@@ -6,6 +6,7 @@
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="css/app.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -38,20 +39,17 @@
 
 <div ng-app="AppMain" ng-controller="GithubController">
     <div ng-include src="headerTemplate"></div>
-    <div id="lineChartRender"></div>
     <p>{{testData}}</p>
-    <p>{{loaded}}</p>
     <div class="container">
         <!-- Example row of columns -->
         <div class="row">
-        <!-- page specific -->
-        <div ng-view></div>
-    </div>
+            <!-- page specific view -->
+            <div ng-view></div>
         </div>
+    </div>
     <!-- container ends -->
-  <div ng-include src="footerTemplate"></div>
-
-
+    <!-- footer -->
+    <div ng-include src="footerTemplate"></div>
 
 </body>
 </html>

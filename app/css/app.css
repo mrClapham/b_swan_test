@@ -5,7 +5,7 @@ body {
 .git-holder {
   background-color: #222222;
   padding: 15px;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 .git-footer {
   background-color: #222222;
@@ -22,19 +22,62 @@ body {
   padding: 0;
 }
 .git-repo-menu-cell {
+  background-color: #222222;
   word-wrap: break-word;
-  background-color: #ffff00;
   margin: 1px 0 1px 0;
+  position: relative;
+  height: 30px;
 }
 .git-repo-menu-cell a {
-  color: #d3ec0e;
+  color: #999999;
+}
+.git-repo-menu-cell .cell-icon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.git-repo-menu-cell .cell-icon img {
+  height: 30px;
+}
+.git-repo-menu-cell .cell-title {
+  position: absolute;
+  left: 45px;
+  top: 5px;
 }
 .git-repo-menu-cell .git-repo-menu-cell-inner {
-  display: block;
+  width: 100%;
+  height: 100%;
 }
 .git-main-display {
   word-wrap: break-word;
   background-color: #454545;
+}
+.git-main-display h3 {
+  color: #d3ec0e;
+}
+.git-main-display a {
+  color: #ffffff;
+}
+.git-main-display a:hover {
+  color: #d3ec0e;
+  text-decoration: none;
+}
+ul.issues {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.issues a {
+  color: #ffffff;
+}
+ul.issues a:hover {
+  color: #d3ec0e;
+  text-decoration: none;
+}
+ul.issues li {
+  border-top: 1px dotted #ffffff;
 }
 /*  OVERRIDES FOR BOOTSTRAP */
 .jumbotron {

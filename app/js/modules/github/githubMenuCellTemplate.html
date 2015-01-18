@@ -1,12 +1,17 @@
 <li class="git-repo-menu-cell" data-ng-repeat = "(key, item) in items">
     <a ng-click="setActiveRepo(key)">
-            <div class="git-repo-menu-cell-inner">
-                <!--<h1>{{key}}</h1>-->
-                <!--<div class="innerTitle">{{item.$$hashKey}}</div>-->
-                <!--<div class="innerTitle">{{item.owner.url}}</div>-->
-                <!--<div class="innerTitle">{{item.stargazers_url}}</div>-->
-                    <img ng-src="{{item.owner.avatar_url}}" width="18px" />
-                    <p>{{item.full_name}}</p>
+        <div class="git-repo-menu-cell-inner">
+            <!--<h1>{{key}}</h1>-->
+            <!--<div class="innerTitle">{{item.$$hashKey}}</div>-->
+            <!--<div class="innerTitle">{{item.owner.url}}</div>-->
+            <!--<div class="innerTitle">{{item.stargazers_url}}</div>-->
+            <div class="cell-icon">
+                <img ng-src="{{item.owner.avatar_url}}"  />
             </div>
+            <div class="cell-title">
+                {{item.full_name}}
+            </div>
+        </div>
     </a>
 </li>
+

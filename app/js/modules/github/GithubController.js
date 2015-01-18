@@ -1,5 +1,4 @@
 githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'GithubPublicApi', '$http', function($scope, GitHubStreamData, GithubPublicApi, $http) {
-    $scope.testData = "Test data";
     $scope.loaded = "Search github";
     $scope.gitSearchData = {};
     $scope.searchTerm = "Three";
@@ -8,6 +7,8 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
     $scope.selectedRepo = null;
     $scope.headerTemplate  = "partials/header.html";
     $scope.footerTemplate  = "partials/footer.html";
+    // has the chart been initialised?
+    $scope.barChartGit = null
 
     //-- watches
 
@@ -24,15 +25,21 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
             $scope.gitSearchData = resp;
             $scope.items = resp.items;
             if($scope.items[0]) $scope.setActiveRepo(0);
-            $scope.items.length == 0 ? $scope.loaded = "Sorry, there were no results for "+$scope.searchTerm : $scope.loaded = "HAS LOADED";
+            if($scope.items.length == 0){
+                $scope.loaded = "Sorry, there were no results for "+$scope.searchTerm;
+            }else{
+                $scope.loaded = $scope.items.length+" results"
+                if(!$scope.barChartGit){
+                    $scope.LineChartRenderElement = document.getElementById($scope.lineChartHolderId);
+                    $scope.initD3Chart($scope.lineChartHolderId);
+                }
+            }
         });
     };
 //
     $scope.setActiveRepo = function(value){
         $scope.selectedRepoIndex = value;
         $scope.selectedRepo = $scope.items[$scope.selectedRepoIndex];
-        console.log("ACTIVE REPO SET")
-
     }
     //-- create the d3 chart
     //TODO: if time - move this to its own directive.
@@ -41,7 +48,6 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
         $scope.barChartGit = new BarChartGit(targ);
     };
 
-    $scope.LineChartRenderElement = document.getElementById($scope.lineChartHolderId);
-    $scope.initD3Chart($scope.lineChartHolderId);
+
 }]);
 

@@ -3,7 +3,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
         this._target = target;
         this._data = opt_data || [];
         this.backgroundColor = "#353535"
-        this.width      = 500;
+        this.width      = 1170;
         this.height     = 400;
         this.padding = {t:40, r:40, b:40,l:40};
         this._svg;
@@ -47,13 +47,13 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .attr('transform', "translate(" + this.padding.l + "," + this.padding.t  + ")");
 
        this._lineHolder = this._inner.append('g')
-           .attr('width',this.width)
-           .attr('height',this.height )
+           .attr('width',this.width-(this.padding.r +this.padding.l) )
+           .attr('height',this.height-(this.padding.t +this.padding.b) )
 
-       this._lineHolder
+       this._lineHolderRect = this._lineHolder
            .append('svg:rect')
-           .attr('width',this.width)
-           .attr('height',this.height )
+           .attr('width',this.width-(this.padding.r +this.padding.l) )
+           .attr('height',this.height-(this.padding.t +this.padding.b) )
            .style('background-color',  "0xffff00")
 
 
@@ -74,7 +74,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
             return d[_this.yProperty];} );
         console.log("MAX   ",max);
         this._scaleY = d3.scale.linear()
-            .range([0, this.height])
+            .range([0, this.height-(this.padding.t +this.padding.b) ])
             .domain([0,max ]);
 
         _updateView.call(this);
@@ -86,7 +86,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
 
     var _updateView = function(){
         var _this = this
-        this._bars = this._svg.selectAll(".bar")
+        this._bars = this._lineHolder.selectAll(".bar")
             .data(this._data);
 
         this._bars
@@ -101,7 +101,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
 
         this._bars.transition()
             .duration(800)
-            .attr("y", function(d,i){ return _this.height - ( _this._scaleY(d[_this.yProperty]) )} )
+            .attr("y", function(d,i){ return _this.height-(_this.padding.b + _this.padding.t) - ( _this._scaleY(d[_this.yProperty]) )} )
             .attr("height", function(d) { return _this._scaleY(d[_this.yProperty]) });
 
         this._bars.exit().remove();
