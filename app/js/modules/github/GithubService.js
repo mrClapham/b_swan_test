@@ -42,14 +42,6 @@ githubModule.factory('GithubPublicApi', function($resource, $q, GitHubStreamData
                 q.reject(err);
             })
             return q.promise;
-        },
-        search2:function(){
-            var TwitterAPI = $resource("https://api.github.com/search/repositories/",
-                { callback: "JSON_CALLBACK" },
-                { get: { method: "JSONP" }});
-
-                var result = TwitterAPI.get({ q: "charlie" });
-                console.log("RESULT :: ",result)
         }
     }
 })

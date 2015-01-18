@@ -1,11 +1,52 @@
 @greyMid: #454545;
 @greyDk: #454545;
 @textGrey: #999999;
+@navGrey: #222222;
+@accentColour: #D3EC0E;
 body{
     background-color: @greyMid;
     color:@textGrey;
 }
 .git-holder{
-    background-color: @greyDk;
-    border: 1px solid #000000;
+    background-color: @navGrey;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.git-footer{
+  background-color: @navGrey;
+  padding: 100px;
+}
+.git-menu-list{
+  list-style: none;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+  margin: 0;
+  padding: 0;
+}
+.git-repo-menu-cell{
+  word-wrap: break-word;
+  background-color: #ffff00;
+  margin: 1px 0 1px 0;
+  a{
+    color: @accentColour;
+  }
+
+  .git-repo-menu-cell-inner{
+    display: block;
+  }
+}
+
+.git-main-display{
+  word-wrap: break-word;
+  background-color: @greyMid;
+}
+
+/*  OVERRIDES FOR BOOTSTRAP */
+
+.jumbotron{
+  background-color: @accentColour;
 }

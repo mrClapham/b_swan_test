@@ -1,22 +1,26 @@
 <div class="git-holder">
-    <a ng-click="searchOn(searchTerm)">search</a>
-    <input type="text" ng-model="searchTerm"/>
-    <p>{{searchTerm}}</p>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-4"><input class="form-control" type="text" ng-model="searchTerm"/> </div>
+    <div class="col-xs-6 col-md-4"><button type="submit" class="btn btn-success" ng-click="searchOn(searchTerm)">Search</button></div>
+    <div class="col-xs-6 col-md-4"><p>{{searchTerm}}</p></div>
+</div>
+
+
 
 
 </div>
 
 <div class="col-md-4">
-    <ul>
+    <ul class="git-menu-list">
         <menu-cell></menu-cell>
     </ul>
 </div>
 <div class="col-md-4 selectedItem">
-        <h3> Satagazers: {{selectedRepo.stargazers_url}} </h3>
+        <p> Satagazers: {{selectedRepo.stargazers_url}} </p>
 </div>
 <div class="col-md-4">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+ <main-project-display></main-project-display>
 </div>
 </div>

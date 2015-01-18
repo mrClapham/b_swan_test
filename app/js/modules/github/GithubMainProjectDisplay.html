@@ -1,0 +1,12 @@
+<div class="git-main-display">
+<h1>This is the the main item</h1>
+<p> Satragazers: {{$parent.selectedRepo.stargazers_url}} </p>
+<p> Satragazers: {{$parent.selectedRepo.full_name}} </p>
+<!--<a ng-click="getIssues()">CLICK FOR ISSUES</a>-->
+
+    <li data-ng-repeat = "(key, item) in issueData">
+        <H3>ISSUE {{item.title}}</H3>
+    </li>
+
+
+</div>

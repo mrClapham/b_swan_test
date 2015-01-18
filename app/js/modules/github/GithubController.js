@@ -1,15 +1,13 @@
 githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'GithubPublicApi', '$http', function($scope, GitHubStreamData, GithubPublicApi, $http) {
-    $scope.testData = "Test data bollox";
+    $scope.testData = "Test data";
     $scope.loaded = "Search github";
     $scope.gitSearchData = {};
     $scope.searchTerm = "Three";
     $scope.lineChartHolderId = "lineChartRender";
     $scope.selectedRepoIndex = 0;
     $scope.selectedRepo = null;
-
-
-
     $scope.headerTemplate  = "partials/header.html";
+    $scope.footerTemplate  = "partials/footer.html";
 
     //-- watches
 
@@ -29,10 +27,7 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
             $scope.items.length == 0 ? $scope.loaded = "Sorry, there were no results for "+$scope.searchTerm : $scope.loaded = "HAS LOADED";
         });
     };
-    $scope.searchIssues = function(){
-        GithubPublicApi.searchIssues("Netflix","netflix.github.com")
-    }
-
+//
     $scope.setActiveRepo = function(value){
         $scope.selectedRepoIndex = value;
         $scope.selectedRepo = $scope.items[$scope.selectedRepoIndex];
@@ -48,6 +43,5 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
 
     $scope.LineChartRenderElement = document.getElementById($scope.lineChartHolderId);
     $scope.initD3Chart($scope.lineChartHolderId);
-    $scope.searchIssues("codeforamerica/three")
 }]);
 
