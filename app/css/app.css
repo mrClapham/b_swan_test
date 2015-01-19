@@ -2,6 +2,12 @@ body {
   background-color: #454545;
   color: #999999;
 }
+.into a {
+  color: #d3ec0e;
+}
+.into a:hover {
+  color: #cccccc;
+}
 .hide {
   display: none;
 }
@@ -101,6 +107,14 @@ ul.issues li {
 .jumbotron {
   background-color: #d3ec0e;
 }
+.jumbotron h2,
+.jumbotron p {
+  color: #222222;
+}
 .btn-default:active {
   background-color: #d3ec0e;
+}
+.btn-success {
+  background-color: #d3ec0e;
+  color: #222222;
 }

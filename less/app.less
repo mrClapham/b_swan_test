@@ -8,6 +8,14 @@ body{
     background-color: @greyMid;
     color:@textGrey;
 }
+.into{
+  a{
+    color: @accentColour;
+&:hover{
+  color: #cccccc;
+}
+  }
+}
 .hide{
   display: none;
 }
@@ -116,10 +124,18 @@ ul.issues{
 
 .jumbotron{
   background-color: @accentColour;
+  h2, p{
+    color: @navGrey;
+  }
 }
 
 .btn-default{
   &:active{
     background-color: @accentColour;
   }
+}
+
+.btn-success {
+  background-color: @accentColour;
+  color: @navGrey;
 }

@@ -2,10 +2,10 @@
 
 
 ###Here is the Github search app.
-All in all it was about 20hrs or extremly fragmented effort.
+All in all it was about 20hrs of extremly fragmented work.
 
 
-It is a single page Angular app running on a really basic node server.
+It's a single page Angular app, running on a really basic node server.
 
 The styling is mostly Twitter Bootstrap, with a bit of tarting up. 
 
