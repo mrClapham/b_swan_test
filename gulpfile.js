@@ -12,7 +12,6 @@ function standardHandler(err){
     // Log to console
     util.log(util.colors.red('Error'), err.message);
 }
-
 // Less task
 gulp.task('less', function () {
     gulp.src('./less/app.less')
@@ -30,8 +29,3 @@ gulp.task('less', function () {
 gulp.task('watch-less', function () {
     gulp.watch(['less/*.less'], ['less']);
 });
-
-
-//{
-//    paths: [ path.join(__dirname, 'less', 'includes') ]
-//}
