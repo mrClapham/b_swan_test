@@ -10,6 +10,9 @@ body {
   padding: 15px;
   margin: 15px 0;
 }
+.chart-buttons {
+  margin-top: 15px ;
+}
 .git-footer {
   background-color: #222222;
   padding: 100px;
@@ -96,5 +99,8 @@ ul.issues li {
 }
 /*  OVERRIDES FOR BOOTSTRAP */
 .jumbotron {
+  background-color: #d3ec0e;
+}
+.btn-default:active {
   background-color: #d3ec0e;
 }

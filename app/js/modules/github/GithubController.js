@@ -50,6 +50,12 @@ githubModule.controller('GithubController', ['$scope', 'GitHubStreamData', 'Gith
         $scope.barChartGit = new BarChartGit(targ);
     };
 
+    $scope.setChartYValue = function(value){
+        if($scope.barChartGit){
+            $scope.barChartGit.setYProperty(value)
+        }
+    }
+
 
 }]);
 

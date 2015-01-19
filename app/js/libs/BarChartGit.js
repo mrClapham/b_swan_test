@@ -4,11 +4,12 @@ var BarChartGit = (function(target, opt_data, opt_config){
         this._data = opt_data || [];
         this.backgroundColor = "#353535"
         this.width      = 1170;
-        this.height     = 800;
+        this.height     = 500;
         this.padding = {t:40, r:40, b:240,l:90};
         this._svg;
         this._gridLinesHorizontal = null;
         this._gridLinesVertical = null;
+        this.barColour = "#D3EC0E"
 
         this._scaleX    = null;
         this._scaleY     = null;
@@ -33,7 +34,9 @@ var BarChartGit = (function(target, opt_data, opt_config){
     }
 
    var _init_svg =function(){
-        this._svg = d3.select( "#"+this.getTarget() )
+       var _this = this;
+
+       this._svg = d3.select( "#"+this.getTarget() )
             .style('width', this.width+ "px")
             .style('height',  this.height+ "px")
             .style('background-color',  this.backgroundColor)
@@ -41,6 +44,16 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .attr('width',this.width)
             .attr('height',this.height )
             .attr('class', "chartSvg")
+
+       this.title_bar = this._svg
+           .append("text")
+           .attr("class", "chart-title-text")
+           .attr('fill',  "#ffffff")
+           .attr("x", _this.padding.l)
+           .attr("y", _this.padding.t/2)
+           .attr("dy", ".71em")
+//           .style("text-anchor", "end")
+           .text(function(d,i){return _this.yProperty.split('_').join(" ") });
 
        this._inner = this._svg
             .append('svg:g')
@@ -66,6 +79,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
             this._svg
                 .append('svg:g')
                 .attr('class', 'gridlinesV')
+                .attr('fill', '#ffffff')
                 .attr("transform", "translate(" + this.padding.l +","+this.padding.t+ ")")
        ;
     }
@@ -98,7 +112,11 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .attr("class", "bar")
             .append("rect")
             .attr("class", "barDisplay")
-            .attr('fill',  "#ff00ff")
+            .attr('fill',  this.barColour)
+
+        this._bars
+            .select('.chart-text')
+            .remove();
 
         this._barsText = this._bars
             .append("text")
@@ -121,18 +139,23 @@ var BarChartGit = (function(target, opt_data, opt_config){
     var _updateView = function(){
         var _this = this
 
+            _this.title_bar
+            .text(function(d,i){return _this.yProperty.split('_').join(" ") });
+
+
         this._gridLinesY
             .call(this.yAxis);
 
 //            .attr("y", function(d,i){ return _this.height - ( _this._scaleY(d[_this.yProperty]) )} )
 //            .attr("height", function(d) { return _this._scaleY(d[_this.yProperty]) });
 
+        var barSpacing = (_this.width-this.padding.l-this.padding.r)/30
 
         this._bars.transition()
             .duration(800)
             //.attr("x", function(d, i) { return 30 * i; })
             .attr("transform", function(d, i) {
-                return "translate("+30*i+","+0+")";
+                return "translate("+barSpacing*i+","+0+")";
             })
             .select('.barDisplay')
             .attr("y", function(d,i){ return _this._scaleY(d[_this.yProperty])} )
@@ -141,10 +164,8 @@ var BarChartGit = (function(target, opt_data, opt_config){
             console.log(i," : ",d[_this.yProperty]," ",_this._scaleY(d[_this.yProperty]) )
             return (_this.height-_this.padding.b - _this.padding.t) - _this._scaleY(d[_this.yProperty])
             })
-            .attr("width", ((_this.width-this.padding.l-this.padding.l)/30-1) );
-
+            .attr("width", ((_this.width-this.padding.l-this.padding.r)/30-3) );
     }
-
 
 // Methods
     _scope.prototype = {
@@ -157,6 +178,10 @@ var BarChartGit = (function(target, opt_data, opt_config){
         },
         getData:function(){
             return this._data;
+        },
+        setYProperty:function(value){
+            this.yProperty  = value
+            _onDataChanged.call(this);
         }
     };
     return _scope

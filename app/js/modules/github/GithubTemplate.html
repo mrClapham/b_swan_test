@@ -1,6 +1,12 @@
 <div id="lineChartRender"></div>
-
+        <div ng-class="{hide: items.length == 0}" class="chart-buttons">
+            <button class="btn btn-default" type="button" ng-click="setChartYValue('stargazers_count')">stargazers</button>
+            <button class="btn btn-default" type="button" ng-click="setChartYValue('open_issues')">open issues</button>
+            <button class="btn btn-default" type="button" ng-click="setChartYValue('forks_count')">forks</button>
+        </div>
 <div class="git-holder">
+
+
 
 
 <div class="row">
