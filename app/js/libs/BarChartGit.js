@@ -5,7 +5,7 @@ var BarChartGit = (function(target, opt_data, opt_config){
         this.backgroundColor = "#353535"
         this.width      = 1170;
         this.height     = 500;
-        this.padding = {t:40, r:40, b:240,l:90};
+        this.padding = {t:40, r:40, b:260,l:90};
         this._svg;
         this._gridLinesHorizontal = null;
         this._gridLinesVertical = null;
@@ -124,8 +124,8 @@ var BarChartGit = (function(target, opt_data, opt_config){
             .attr('fill',  "#ffffff")
             .attr("transform", "rotate(-90)")
             .attr("y", 16)
-            .attr("x", - (this.height-this.padding.b) )
-            .attr("dy", ".71em")
+            .attr("x", 10 - (this.height-this.padding.b) )
+            .attr("dy", ".51em")
             .style("text-anchor", "end")
             .text(function(d,i){return d.full_name+": "+d[_this.yProperty]});
 

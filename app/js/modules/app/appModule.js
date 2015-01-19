@@ -5,8 +5,11 @@ AppMain.config(['$routeProvider',
             when('/git', {
                 templateUrl: 'js/modules/github/GithubTemplate.html'
             }).
+            when('/', {
+                templateUrl: 'js/modules/default/default.html'
+            }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/#/'
             });
     }]);
 
