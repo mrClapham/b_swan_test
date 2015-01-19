@@ -24,8 +24,6 @@ gulp.task('less', function () {
         .pipe(less())
         .on('error', standardHandler )
         .pipe(gulp.dest('./app/css'));
-
-
 });
 
 // Watch tasks

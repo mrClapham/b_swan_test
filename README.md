@@ -1,8 +1,8 @@
-# A search tool for GitHub repositries
+# A search tool for GitHub repositories
 
 
 ###Here is the Github search app.
-All in all it was about 20hrs of extremly fragmented work.
+All in all it was about 20hrs of extremely fragmented work.
 
 
 It's a single page Angular app, running on a really basic node server.
@@ -11,7 +11,7 @@ The styling is mostly Twitter Bootstrap, with a bit of tarting up.
 
 I used Less as a CSS preprocessor and set up a Gulp task to watch for changes and compile.
 
-Dependancys are handled via Bower and dev dependencies via NPM.
+Dependencies are handled via Bower and dev dependencies via NPM.
 
 
 I worked a bit of D3 into it too as I love D3.
@@ -38,7 +38,7 @@ and if you want to run the Less watcher to automatically compile when the less f
 It was a fun task - the GitHub API is one I've never used and I could have gone on and on with it.
 	
 ###Stuff I would have sorted - if I had more time
-I noticed, fairly late, that I was getting some 403 Errors when I made too many api requests, as they choke it down when you are making freeform calls to the api without request autorisation. It would have been nice to add a catch for bad requests.
+I noticed, fairly late, that I was getting some 403 Errors when I made too many api requests, as they choke it down when you are making freeform calls to the api without request authorisation. It would have been nice to add a catch for bad requests.
 
 There are no unit tests. It's all a bit quick and dirty, given the timescale.
 
